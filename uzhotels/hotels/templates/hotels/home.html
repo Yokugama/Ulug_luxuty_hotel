@@ -1,0 +1,17 @@
+{% extends 'hotels/base.html' %}
+
+{% block title %}Welcome to UzHotels{% endblock %}
+
+{% block content %}
+<h1 class="text-4xl font-bold text-center mb-8">Welcome to UzHotels</h1>
+<div class="bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold mb-4">Search for Hotels</h2>
+    <form method="get" action="{% url 'hotel_list' %}">
+        {{ search_form.as_p }}
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+            Search Hotels
+        </button>
+    </form>
+</div>
+{% endblock %}
+

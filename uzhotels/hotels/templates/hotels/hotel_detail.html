@@ -1,0 +1,31 @@
+{% extends 'hotels/base.html' %}
+
+{% block title %}{{ hotel.name }}{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">{{ hotel.name }}</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+        <img src="https://via.placeholder.com/600x400" alt="{{ hotel.name }}" class="w-full h-64 object-cover rounded-lg shadow-md">
+    </div>
+    <div>
+        <p class="text-gray-600 mb-4">{{ hotel.description }}</p>
+        <p class="font-semibold mb-2">Address: {{ hotel.address }}</p>
+        <p class="font-semibold mb-2">City: {{ hotel.city }}</p>
+        <p class="font-semibold mb-2">Contact: {{ hotel.contact_phone }}</p>
+        <p class="font-semibold mb-4">Email: {{ hotel.contact_email }}</p>
+        <div class="bg-blue-100 p-4 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">Available Rooms</h2>
+            {% for room in hotel.rooms.all %}
+            <div class="mb-2">
+                <p>{{ room.get_room_type_display }} - ${{ room.price }} per night</p>
+                <a href="{% url 'booking_create' room.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block">Book Now</a>
+            </div>
+            {% empty %}
+            <p>No rooms available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

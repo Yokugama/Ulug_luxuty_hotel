@@ -1,0 +1,20 @@
+{% extends 'hotels/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold text-center mb-8">Login</h1>
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 w-full">
+            Login
+        </button>
+    </form>
+    <p class="mt-4 text-center">
+        Don't have an account? <a href="{% url 'register' %}" class="text-blue-500 hover:text-blue-700">Register</a>
+    </p>
+</div>
+{% endblock %}
+

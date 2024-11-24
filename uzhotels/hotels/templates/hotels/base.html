@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UzHotels{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'home' %}" class="text-white text-2xl font-bold">UzHotels</a>
+            <div>
+                <a href="{% url 'home' %}" class="text-white mr-4">Home</a>
+                <a href="{% url 'hotel_list' %}" class="text-white mr-4">Hotels</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="text-white mr-4">Profile</a>
+                    <a href="{% url 'logout' %}" class="text-white">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="text-white mr-4">Login</a>
+                    <a href="{% url 'register' %}" class="text-white">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-8">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
+
